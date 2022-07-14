@@ -1,5 +1,12 @@
 <?php
 
+// signup and login
+Route::post('v1/signup', 'Api\V1\Admin\AuthApiController@signup');
+Route::post('v1/login', 'Api\V1\Admin\AuthApiController@login');
+Route::post('v1/social-login', 'Api\V1\Admin\AuthApiController@socialLogin');
+Route::post('v1/forgot-password', 'Api\V1\Admin\AuthApiController@forgotPassword');
+Route::post('v1/reset-password', 'Api\V1\Admin\AuthApiController@reset');
+
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
@@ -8,6 +15,9 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('roles', 'RolesApiController');
 
     // Users
+    Route::get('users/show-profile', 'UsersApiController@showProfile')->name('users.showProfile');
+    Route::patch('users/update-profile', 'UsersApiController@updateProfile')->name('users.updateProfile');
+    Route::post('users/update-profile-image', 'UsersApiController@updateProfileImage')->name('users.updateProfileImage');
     Route::apiResource('users', 'UsersApiController');
 
     // Product Category
