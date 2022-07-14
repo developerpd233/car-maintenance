@@ -12,7 +12,15 @@ Route::get('/home', function () {
 Auth::routes();
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+    
     Route::get('/', 'HomeController@index')->name('home');
+    
+    // Brand
+    Route::delete('brands/destroy', 'BrandController@massDestroy')->name('brands.massDestroy');
+    Route::post('brands/media', 'BrandController@storeMedia')->name('brands.storeMedia');
+    Route::post('brands/ckmedia', 'BrandController@storeCKEditorImages')->name('brands.storeCKEditorImages');
+    Route::resource('brands', 'BrandController');
+    
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
