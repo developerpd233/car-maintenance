@@ -42,14 +42,11 @@ class Brand extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-<<<<<<< HEAD
     // public function brandServices()
     // {
     //     return $this->belongsToMany(Service::class);
     // }
 
-=======
->>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
     public function getImageAttribute()
     {
         $file = $this->getMedia('image')->last();

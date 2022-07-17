@@ -50,7 +50,6 @@ class BrandController extends Controller
             $table->editColumn('title', function ($row) {
                 return $row->title ? $row->title : '';
             });
-<<<<<<< HEAD
             $table->editColumn('description', function ($row) {
                 return $row->description ? $row->description : '';
             });
@@ -65,19 +64,6 @@ class BrandController extends Controller
 
     //             return '';
     //         });
-=======
-            $table->editColumn('image', function ($row) {
-                if ($photo = $row->image) {
-                    return sprintf(
-        '<a href="%s" target="_blank"><img src="%s" width="50px" height="50px"></a>',
-        $photo->url,
-        $photo->thumbnail
-    );
-                }
-
-                return '';
-            });
->>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
 
             $table->rawColumns(['actions', 'placeholder', 'image']);
 
@@ -138,11 +124,8 @@ class BrandController extends Controller
     {
         abort_if(Gate::denies('brand_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-<<<<<<< HEAD
         // $brand->load('brandServices');
 
-=======
->>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
         return view('admin.brands.show', compact('brand'));
     }
 
