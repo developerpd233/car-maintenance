@@ -17,7 +17,7 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.service.fields.id') }}
+                            ID
                         </th>
                         <td>
                             {{ $service->id }}
@@ -25,52 +25,78 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.service.fields.name') }}
+                            Servie Title
                         </th>
                         <td>
-                            {{ $service->name }}
+                            {{ $service->title }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.service.fields.price') }}
+                            Service description
+                        </th>
+                        <td>
+                            {{ $service->description }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Service time after last appointment
+                        </th>
+                        <td>
+                            {{ App\Models\Service::LAST_APPOINTMENT_SELECT[$service->last_appointment] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Branches Name
+                        </th>
+                        <td>
+                            @foreach($service->branches as $key => $branch)
+                                <span class="label label-info">{{ $branch->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Brand Name
+                        </th>
+                        <td>
+                            @foreach($service->brands as $key => $brand)
+                                <span class="label label-info">{{ $brand->title }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Car model & year
+                        </th>
+                        <td>
+                            {{ $service->model_year }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Mileage
+                        </th>
+                        <td>
+                            {{ $service->mileage }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Working time
+                        </th>
+                        <td>
+                            {{ $service->working_time }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            Price
                         </th>
                         <td>
                             {{ $service->price }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.service.fields.address') }}
-                        </th>
-                        <td>
-                            {{ $service->address }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.service.fields.type') }}
-                        </th>
-                        <td>
-                            {{ $service->type }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.service.fields.status') }}
-                        </th>
-                        <td>
-                            {{ App\Models\Service::STATUS_SELECT[$service->status] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.service.fields.user') }}
-                        </th>
-                        <td>
-                            @foreach($service->users as $key => $user)
-                                <span class="label label-info">{{ $user->name }}</span>
-                            @endforeach
                         </td>
                     </tr>
                 </tbody>

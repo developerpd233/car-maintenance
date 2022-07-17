@@ -84,7 +84,7 @@
                     </li>
                 @endcan
                 @can('product_management_access')
-                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/transactions*") ? "menu-open" : "" }} {{ request()->is("admin/orders*") ? "menu-open" : "" }} {{ request()->is("admin/reviews*") ? "menu-open" : "" }} {{ request()->is("admin/product-categories*") ? "menu-open" : "" }} {{ request()->is("admin/product-tags*") ? "menu-open" : "" }} {{ request()->is("admin/services*") ? "menu-open" : "" }} {{ request()->is("admin/packages*") ? "menu-open" : "" }}">
+                    <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/transactions*") ? "menu-open" : "" }} {{ request()->is("admin/orders*") ? "menu-open" : "" }} {{ request()->is("admin/reviews*") ? "menu-open" : "" }} {{ request()->is("admin/product-categories*") ? "menu-open" : "" }} {{ request()->is("admin/product-tags*") ? "menu-open" : "" }} {{ request()->is("admin/packages*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-shopping-cart">
 
@@ -163,18 +163,6 @@
                                         </i>
                                         <p>
                                             {{ trans('cruds.productTag.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('service_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.services.index") }}" class="nav-link {{ request()->is("admin/services") || request()->is("admin/services/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.service.title') }}
                                         </p>
                                     </a>
                                 </li>
@@ -369,6 +357,54 @@
                                 </li>
                             @endcan
                         </ul>
+                    </li>
+                @endcan
+                <!-- @can('branch_service_crud_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.branch-service-cruds.index") }}" class="nav-link {{ request()->is("admin/branch-service-cruds") || request()->is("admin/branch-service-cruds/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.branchServiceCrud.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan -->
+                @can('brand_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.brands.index") }}" class="nav-link {{ request()->is("admin/brands") || request()->is("admin/brands/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                Brands
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('branch_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.branches.index") }}" class="nav-link {{ request()->is("admin/branches") || request()->is("admin/branches/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                Branches
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('service_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.services.index") }}" class="nav-link {{ request()->is("admin/services") || request()->is("admin/services/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.service.title') }}
+                            </p>
+                        </a>
                     </li>
                 @endcan
                 @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))

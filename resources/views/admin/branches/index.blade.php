@@ -1,21 +1,26 @@
+
+    
+
 @extends('layouts.admin')
 @section('content')
-@can('service_create')
+@can('branch_create')
+
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.services.create') }}">
+            <a class="btn btn-success" href="{{ route('admin.branches.create') }}">
                 Add new
             </a>
         </div>
     </div>
+    
 @endcan
 <div class="card">
     <div class="card-header">
-        Services
+        Branch List
     </div>
-
+    
     <div class="card-body">
-        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Service">
+        <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Branch">
             <thead>
                 <tr>
                     <th width="10">
@@ -25,31 +30,22 @@
                         ID
                     </th>
                     <th>
-                        Servie Title
+                        Name
                     </th>
                     <th>
-                        Service Description
+                        Address
                     </th>
                     <th>
-                        Last Appointment
+                        Bays/Jacks
                     </th>
                     <th>
-                        Branch Name
+                        Booking Capability
                     </th>
                     <th>
-                        Brand Name
+                        Created At
                     </th>
                     <th>
-                        Car Model & year 
-                    </th>
-                    <th>
-                        Mileage
-                    </th>
-                    <th>
-                        Working Time
-                    </th>
-                    <th>
-                        Price
+                        Status
                     </th>
                     <th>
                         Action
@@ -57,6 +53,7 @@
                 </tr>
             </thead>
         </table>
+    
     </div>
 </div>
 
@@ -68,11 +65,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('service_delete')
+@can('branch_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.services.massDestroy') }}",
+    url: "{{ route('admin.branches.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -104,26 +101,23 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.services.index') }}",
+    ajax: "{{ route('admin.branches.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
-{ data: 'title', name: 'title' },
-{ data: 'description', name: 'description' },
-{ data: 'last_appointment', name: 'last_appointment' },
-{ data: 'branch', name: 'branches.name' },
-{ data: 'brand', name: 'brands.title' },
-{ data: 'model_year', name: 'model_year' },
-{ data: 'mileage', name: 'mileage' },
-{ data: 'working_time', name: 'working_time' },
-{ data: 'price', name: 'price' },
+{ data: 'name', name: 'name' },
+{ data: 'address', name: 'address' },
+{ data: 'bays_jacks', name: 'bays_jacks' },
+{ data: 'booking_capability', name: 'booking_capability' },
+{ data: 'created_at', name: 'created_at' },
+{ data: 'status', name: 'status' },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
-    pageLength: 25,
+    pageLength: 10,
   };
-  let table = $('.datatable-Service').DataTable(dtOverrideGlobals);
+  let table = $('.datatable-Branch').DataTable(dtOverrideGlobals);
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

@@ -17,29 +17,45 @@ class UpdateServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => [
+            'title' => [
                 'string',
                 'required',
             ],
-            'price' => [
+            'description' => [
                 'required',
             ],
-            'address' => [
+            'last_appointment' => [
                 'required',
             ],
-            'type' => [
-                'string',
-                'nullable',
-            ],
-            'status' => [
-                'required',
-            ],
-            'users.*' => [
+            'branches.*' => [
                 'integer',
             ],
-            'users' => [
+            'branches' => [
                 'required',
                 'array',
+            ],
+            'brands.*' => [
+                'integer',
+            ],
+            'brands' => [
+                'required',
+                'array',
+            ],
+            'model_year' => [
+                'string',
+                'required',
+            ],
+            'mileage' => [
+                'required',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'working_time' => [
+                'required',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
         ];
     }

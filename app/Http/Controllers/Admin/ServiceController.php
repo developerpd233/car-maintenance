@@ -6,8 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyServiceRequest;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
+use App\Models\Branch;
+use App\Models\Brand;
 use App\Models\Service;
-use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,7 @@ class ServiceController extends Controller
         abort_if(Gate::denies('service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Service::with(['users'])->select(sprintf('%s.*', (new Service())->table));
+            $query = Service::with(['branches', 'brands'])->select(sprintf('%s.*', (new Service())->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -44,53 +45,68 @@ class ServiceController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : '';
             });
-            $table->editColumn('name', function ($row) {
-                return $row->name ? $row->name : '';
+            $table->editColumn('title', function ($row) {
+                return $row->title ? $row->title : '';
             });
-            $table->editColumn('price', function ($row) {
-                return $row->price ? $row->price : '';
+            $table->editColumn('description', function ($row) {
+                return $row->description ? $row->description : '';
             });
-            $table->editColumn('address', function ($row) {
-                return $row->address ? $row->address : '';
+            $table->editColumn('last_appointment', function ($row) {
+                return $row->last_appointment ? Service::LAST_APPOINTMENT_SELECT[$row->last_appointment] : '';
             });
-            $table->editColumn('type', function ($row) {
-                return $row->type ? $row->type : '';
-            });
-            $table->editColumn('status', function ($row) {
-                return $row->status ? Service::STATUS_SELECT[$row->status] : '';
-            });
-            $table->editColumn('user', function ($row) {
+            $table->editColumn('branch', function ($row) {
                 $labels = [];
-                foreach ($row->users as $user) {
-                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $user->name);
+                foreach ($row->branches as $branch) {
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $branch->name);
                 }
 
                 return implode(' ', $labels);
             });
+            $table->editColumn('brand', function ($row) {
+                $labels = [];
+                foreach ($row->brands as $brand) {
+                    $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $brand->title);
+                }
 
-            $table->rawColumns(['actions', 'placeholder', 'user']);
+                return implode(' ', $labels);
+            });
+            $table->editColumn('model_year', function ($row) {
+                return $row->model_year ? $row->model_year : '';
+            });
+            $table->editColumn('mileage', function ($row) {
+                return $row->mileage ? $row->mileage : '';
+            });
+            $table->editColumn('working_time', function ($row) {
+                return $row->working_time ? $row->working_time : '';
+            });
+            $table->editColumn('price', function ($row) {
+                return $row->price ? $row->price : '';
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'branch', 'brand']);
 
             return $table->make(true);
         }
 
-        $users = User::get();
-
-        return view('admin.services.index', compact('users'));
+        return view('admin.services.index');
     }
 
     public function create()
     {
         abort_if(Gate::denies('service_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('name', 'id');
+        $branches = Branch::pluck('name', 'id');
 
-        return view('admin.services.create', compact('users'));
+        $brands = Brand::pluck('title', 'id');
+
+        return view('admin.services.create', compact('branches', 'brands'));
     }
 
     public function store(StoreServiceRequest $request)
     {
         $service = Service::create($request->all());
-        $service->users()->sync($request->input('users', []));
+        $service->branches()->sync($request->input('branches', []));
+        $service->brands()->sync($request->input('brands', []));
 
         return redirect()->route('admin.services.index');
     }
@@ -99,17 +115,20 @@ class ServiceController extends Controller
     {
         abort_if(Gate::denies('service_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::pluck('name', 'id');
+        $branches = Branch::pluck('name', 'id');
 
-        $service->load('users');
+        $brands = Brand::pluck('title', 'id');
 
-        return view('admin.services.edit', compact('service', 'users'));
+        $service->load('branches', 'brands');
+
+        return view('admin.services.edit', compact('branches', 'brands', 'service'));
     }
 
     public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->update($request->all());
-        $service->users()->sync($request->input('users', []));
+        $service->branches()->sync($request->input('branches', []));
+        $service->brands()->sync($request->input('brands', []));
 
         return redirect()->route('admin.services.index');
     }
@@ -118,7 +137,7 @@ class ServiceController extends Controller
     {
         abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $service->load('users');
+        $service->load('branches', 'brands');
 
         return view('admin.services.show', compact('service'));
     }

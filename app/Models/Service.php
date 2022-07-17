@@ -12,9 +12,11 @@ class Service extends Model
     use SoftDeletes;
     use HasFactory;
 
-    public const STATUS_SELECT = [
-        'active'   => 'Active',
-        'inactive' => 'In Active',
+    public const LAST_APPOINTMENT_SELECT = [
+        '1_months' => '1 months',
+        '3_months' => '3 months',
+        '6_months' => '6 months',
+        '1_year'   => '1 year',
     ];
 
     public $table = 'services';
@@ -26,19 +28,26 @@ class Service extends Model
     ];
 
     protected $fillable = [
-        'name',
+        'title',
+        'description',
+        'last_appointment',
+        'model_year',
+        'mileage',
+        'working_time',
         'price',
-        'address',
-        'type',
-        'status',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function users()
+    public function branches()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(Branch::class);
+    }
+
+    public function brands()
+    {
+        return $this->belongsToMany(Brand::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

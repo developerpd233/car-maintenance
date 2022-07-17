@@ -109,27 +109,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('subscribtions/destroy', 'SubscribtionController@massDestroy')->name('subscribtions.massDestroy');
     Route::resource('subscribtions', 'SubscribtionController');
 
+    // Service
+    Route::delete('services/destroy', 'ServiceController@massDestroy')->name('services.massDestroy');
+    Route::resource('services', 'ServiceController');
+
     // Package
     Route::delete('packages/destroy', 'PackageController@massDestroy')->name('packages.massDestroy');
     Route::resource('packages', 'PackageController');
 
-    // Branch Service Crud
-    Route::delete('branch-service-cruds/destroy', 'BranchServiceCrudController@massDestroy')->name('branch-service-cruds.massDestroy');
-    Route::resource('branch-service-cruds', 'BranchServiceCrudController');
-
-    // Brand
-    Route::delete('brands/destroy', 'BrandController@massDestroy')->name('brands.massDestroy');
-    Route::post('brands/media', 'BrandController@storeMedia')->name('brands.storeMedia');
-    Route::post('brands/ckmedia', 'BrandController@storeCKEditorImages')->name('brands.storeCKEditorImages');
-    Route::resource('brands', 'BrandController');
-
-    // Branch
     Route::delete('branches/destroy', 'BranchController@massDestroy')->name('branches.massDestroy');
-    Route::resource('branches', 'BranchController');
-
-    // Service
-    Route::delete('services/destroy', 'ServiceController@massDestroy')->name('services.massDestroy');
-    Route::resource('services', 'ServiceController');
+    Route::resource('branches','BranchController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
