@@ -8,6 +8,11 @@ Route::post('v1/forgot-password', 'Api\V1\Admin\AuthApiController@forgotPassword
 Route::post('v1/reset-password', 'Api\V1\Admin\AuthApiController@reset');
 
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
+    
+    // Brand
+    Route::post('brands/media', 'BrandApiController@storeMedia')->name('brands.storeMedia');
+    Route::apiResource('brands', 'BrandApiController');
+    
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
 

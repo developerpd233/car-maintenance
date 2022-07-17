@@ -3,7 +3,11 @@
 
 <div class="card">
     <div class="card-header">
+<<<<<<< HEAD
         Show Brand
+=======
+        {{ trans('global.show') }} {{ trans('cruds.brand.title') }}
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
     </div>
 
     <div class="card-body">
@@ -17,7 +21,11 @@
                 <tbody>
                     <tr>
                         <th>
+<<<<<<< HEAD
                             ID
+=======
+                            {{ trans('cruds.brand.fields.id') }}
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
                         </th>
                         <td>
                             {{ $brand->id }}
@@ -25,13 +33,21 @@
                     </tr>
                     <tr>
                         <th>
+<<<<<<< HEAD
                             Brand Title
+=======
+                            {{ trans('cruds.brand.fields.title') }}
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
                         </th>
                         <td>
                             {{ $brand->title }}
                         </td>
                     </tr>
+<<<<<<< HEAD
                     <!-- <tr>
+=======
+                    <tr>
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
                         <th>
                             {{ trans('cruds.brand.fields.image') }}
                         </th>
@@ -42,10 +58,17 @@
                                 </a>
                             @endif
                         </td>
+<<<<<<< HEAD
                     </tr> -->
                     <tr>
                         <th>
                             Brand description
+=======
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.brand.fields.description') }}
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
                         </th>
                         <td>
                             {!! $brand->description !!}
@@ -62,4 +85,9 @@
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
 @endsection

@@ -4,14 +4,22 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route('admin.brands.create') }}">
+<<<<<<< HEAD
                 Add new
+=======
+                {{ trans('global.add') }} {{ trans('cruds.brand.title_singular') }}
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
+<<<<<<< HEAD
         Brand list
+=======
+        {{ trans('cruds.brand.title_singular') }} {{ trans('global.list') }}
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
     </div>
 
     <div class="card-body">
@@ -22,6 +30,7 @@
 
                     </th>
                     <th>
+<<<<<<< HEAD
                         ID
                     </th>
                     <th>
@@ -35,6 +44,18 @@
                     </th> -->
                     <th>
                         Action
+=======
+                        {{ trans('cruds.brand.fields.id') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.brand.fields.title') }}
+                    </th>
+                    <th>
+                        {{ trans('cruds.brand.fields.image') }}
+                    </th>
+                    <th>
+                        &nbsp;
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
                     </th>
                 </tr>
                 <tr>
@@ -47,10 +68,14 @@
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <td>
+<<<<<<< HEAD
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                     </td>
                     <!-- <td>
                     </td> -->
+=======
+                    </td>
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
                     <td>
                     </td>
                 </tr>
@@ -108,9 +133,13 @@
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'title', name: 'title' },
+<<<<<<< HEAD
 { data: 'description', name: 'description' },
 // { data: 'image', name: 'image', sortable: false, searchable: false },
 
+=======
+{ data: 'image', name: 'image', sortable: false, searchable: false },
+>>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,
