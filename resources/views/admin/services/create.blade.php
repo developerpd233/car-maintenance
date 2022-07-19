@@ -76,8 +76,8 @@
                                 <span class="text-danger">{{ $errors->first('brands') }}</span>
                             @endif
                         </div>
-                        <div class="main_inline row">
-                            <div class="col-md-10 dynamic-field" id="dynamic-field-1">
+                        <div class="car_model_main">
+                            <div class="col-md-10 car_model" id="car_model">
                                 <div class="row" >
                                     <div class="form-group inline">
                                         <label class="required" for="model_year">Car model & year</label>
@@ -115,14 +115,14 @@
                                 <div class="clearfix">
                                     <button type="button" id="add-button" class="btn btn-secondary float-left text-uppercase shadow-sm add-button"><i class="fa fa-plus fa-fw"></i>Add more car models
                                     </button>
-                                    <button type="button" id="remove-button" class="btn btn-secondary float-left text-uppercase ml-1 remove-button" disabled="disabled"><i class="fa fa-minus fa-fw"></i>
+                                    <button type="button" id="remove-button" class="btn btn-secondary float-left text-uppercase ml-1 remove-button"><i class="fa fa-minus fa-fw"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
 
                         
-            <div class="easy"></div>
+            <!-- <div class="easy"></div> -->
 
                     </div>
                 </div>
@@ -204,11 +204,11 @@
     $(document).ready(function() {
       $('.add-button').click(function(){
         var carmodel = $('<div class="main_inline row"><div class="col-md-10 dynamic-field" id="dynamic-field-1"><div class="row" ><div class="form-group inline"><label class="required" for="model_year">Car model & year</label><input class="form-control {{ $errors->has('model_year') ? 'is-invalid' : '' }}" type="text" name="model_year[]" id="model_year" value="{{ old('model_year', '') }}" placeholder="Add model & year" required> @if($errors->has('model_year'))<span class="text-danger">{{ $errors->first('model_year') }}</span>@endif</div><div class="form-group inline"><label class="required" for="mileage">Mileage</label><input class="form-control {{ $errors->has('mileage') ? 'is-invalid' : '' }}" type="number" name="mileage[]" id="mileage" value="{{ old('mileage', '') }}" step="1" placeholder="Add mileage" required><span>km</span>@if($errors->has('mileage'))<span class="text-danger">{{ $errors->first('mileage') }}</span>@endif</div><div class="form-group inline"><label class="required" for="working_time">Working time</label><input class="form-control {{ $errors->has('working_time') ? 'is-invalid' : '' }}" type="number" name="working_time[]" id="working_time" value="{{ old('working_time', '') }}" step="1" placeholder="Add time" required>@if($errors->has('working_time'))<span class="text-danger">{{ $errors->first('working_time') }}</span>@endif</div><div class="form-group inline"><label for="price">Price</label><input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price[]" id="price" value="{{ old('price', '') }}" step="0.01" placeholder="Add price">@if($errors->has('price'))<span class="text-danger">{{ $errors->first('price') }}</span>@endif<span class="help-block">{{ trans('cruds.service.fields.price_helper') }}</span></div></div></div></div>');
-        $('.easy').append(carmodel);
+        $('.car_model').append(carmodel);
       });
 
       $('.remove-button').click(function(){
-        
+        $(this).parent().parent().parent().remove();
       });
 
     });
