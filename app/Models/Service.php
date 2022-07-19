@@ -35,6 +35,7 @@ class Service extends Model
         'mileage',
         'working_time',
         'price',
+        'brand_meta',
         'created_at',
         'updated_at',
         'deleted_at',

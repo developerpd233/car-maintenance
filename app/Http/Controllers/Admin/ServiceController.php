@@ -62,7 +62,11 @@ class ServiceController extends Controller
 
                 return implode(' ', $labels);
             });
+            
             $table->editColumn('brand', function ($row) {
+                // return $brand->title;
+                // return $row->brand ? $row->brand : '';
+
                 $labels = [];
                 foreach ($row->brands as $brand) {
                     $labels[] = sprintf('<span class="label label-info label-many">%s</span>', $brand->title);
@@ -104,6 +108,8 @@ class ServiceController extends Controller
 
     public function store(StoreServiceRequest $request)
     {
+        $p = json_encode($request->price);
+        dd($p);
         $service = Service::create($request->all());
         $service->branches()->sync($request->input('branches', []));
         $service->brands()->sync($request->input('brands', []));

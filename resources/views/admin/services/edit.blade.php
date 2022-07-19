@@ -53,11 +53,11 @@
             </div>
             <div class="form-group">
                 <label class="required" for="brands">Select Brand</label>
-                <div style="padding-bottom: 4px">
+                <!-- <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
-                </div>
-                <select class="form-control select2 {{ $errors->has('brands') ? 'is-invalid' : '' }}" name="brands[]" id="brands" multiple required>
+                </div> -->
+                <select class="form-control {{ $errors->has('brands') ? 'is-invalid' : '' }}" name="brands" id="brands" required>
                     @foreach($brands as $id => $brand)
                         <option value="{{ $id }}" {{ (in_array($id, old('brands', [])) || $service->brands->contains($id)) ? 'selected' : '' }}>{{ $brand }}</option>
                     @endforeach

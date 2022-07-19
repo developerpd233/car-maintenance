@@ -39,7 +39,6 @@ class UpdateServiceRequest extends FormRequest
             ],
             'brands' => [
                 'required',
-                'array',
             ],
             'model_year' => [
                 'string',

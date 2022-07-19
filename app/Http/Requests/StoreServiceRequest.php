@@ -16,6 +16,8 @@ class StoreServiceRequest extends FormRequest
 
     public function rules()
     {
+
+        dd($_REQUEST);
         return [
             'title' => [
                 'string',
@@ -39,24 +41,36 @@ class StoreServiceRequest extends FormRequest
             ],
             'brands' => [
                 'required',
-                'array',
             ],
             'model_year' => [
-                'string',
+                'array',
                 'required',
             ],
             'mileage' => [
                 'required',
-                'integer',
+                // 'integer',
+                'array',
                 'min:-2147483648',
                 'max:2147483647',
             ],
             'working_time' => [
                 'required',
-                'integer',
+                // 'integer',
+                'array',
                 'min:-2147483648',
                 'max:2147483647',
             ],
+            'price' => [
+                'required',
+                // 'integer',
+                'array',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            // 'brand_meta' => [
+            //     'required',
+            // ],
+            
         ];
     }
 }

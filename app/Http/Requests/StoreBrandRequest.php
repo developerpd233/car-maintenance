@@ -24,11 +24,7 @@ class StoreBrandRequest extends FormRequest
                 'required',
             ],
             'image' => [
-<<<<<<< HEAD
                 'nullable',
-=======
-                'required',
->>>>>>> d0b1ee2421818d6b8739f224256661952cb06fb4
             ],
         ];
     }

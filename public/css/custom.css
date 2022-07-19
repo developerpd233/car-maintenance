@@ -106,11 +106,19 @@ div.dt-button-collection {
 .main_inline {
     display: flex;
     margin-bottom: 40px;
+    align-items: center;
 }
-
 
 .form-group.inline {
-    width: 200px !important;
-    text-align: center;
-    margin: 10px 100px 0px 0px;
+    width: 19%;
+    margin: 40px 55px 0px 0px;
 }
+
+.class-link{
+    color:#6cc417;
+    text-decoration:none;
+  }
+  
+  .class-link:hover{
+   color:#ffbb00; 
+  }
