@@ -80,6 +80,8 @@ class BranchController extends Controller
 
     public function store(StoreBranchRequest $request)
     {
+        dd($request);
+
         $branch = Branch::create($request->all());
 
         return redirect()->route('admin.branches.index');
