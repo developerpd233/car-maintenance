@@ -17,7 +17,7 @@ class StoreServiceRequest extends FormRequest
     public function rules()
     {
 
-        dd($_REQUEST);
+        // dd($_REQUEST);
         return [
             'title' => [
                 'string',

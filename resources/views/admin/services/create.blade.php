@@ -113,14 +113,16 @@
                             </div>
                             <div class="col-md-2 mt-30 append-buttons">
                                 <div class="clearfix">
-                                    <button type="button" id="add-button" class="btn btn-secondary float-left text-uppercase shadow-sm"><i class="fa fa-plus fa-fw"></i>Add more car models
+                                    <button type="button" id="add-button" class="btn btn-secondary float-left text-uppercase shadow-sm add-button"><i class="fa fa-plus fa-fw"></i>Add more car models
                                     </button>
-                                    <button type="button" id="remove-button" class="btn btn-secondary float-left text-uppercase ml-1" disabled="disabled"><i class="fa fa-minus fa-fw"></i>
+                                    <button type="button" id="remove-button" class="btn btn-secondary float-left text-uppercase ml-1 remove-button" disabled="disabled"><i class="fa fa-minus fa-fw"></i>
                                     </button>
                                 </div>
                             </div>
                         </div>
 
+                        
+            <div class="easy"></div>
 
                     </div>
                 </div>
@@ -136,7 +138,6 @@
 
 
 
-            
 
 
 
@@ -198,9 +199,31 @@
 
 @section('scripts')
 
+<script>
+
+    $(document).ready(function() {
+      $('.add-button').click(function(){
+        var carmodel = $('<div class="main_inline row"><div class="col-md-10 dynamic-field" id="dynamic-field-1"><div class="row" ><div class="form-group inline"><label class="required" for="model_year">Car model & year</label><input class="form-control {{ $errors->has('model_year') ? 'is-invalid' : '' }}" type="text" name="model_year[]" id="model_year" value="{{ old('model_year', '') }}" placeholder="Add model & year" required> @if($errors->has('model_year'))<span class="text-danger">{{ $errors->first('model_year') }}</span>@endif</div><div class="form-group inline"><label class="required" for="mileage">Mileage</label><input class="form-control {{ $errors->has('mileage') ? 'is-invalid' : '' }}" type="number" name="mileage[]" id="mileage" value="{{ old('mileage', '') }}" step="1" placeholder="Add mileage" required><span>km</span>@if($errors->has('mileage'))<span class="text-danger">{{ $errors->first('mileage') }}</span>@endif</div><div class="form-group inline"><label class="required" for="working_time">Working time</label><input class="form-control {{ $errors->has('working_time') ? 'is-invalid' : '' }}" type="number" name="working_time[]" id="working_time" value="{{ old('working_time', '') }}" step="1" placeholder="Add time" required>@if($errors->has('working_time'))<span class="text-danger">{{ $errors->first('working_time') }}</span>@endif</div><div class="form-group inline"><label for="price">Price</label><input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="number" name="price[]" id="price" value="{{ old('price', '') }}" step="0.01" placeholder="Add price">@if($errors->has('price'))<span class="text-danger">{{ $errors->first('price') }}</span>@endif<span class="help-block">{{ trans('cruds.service.fields.price_helper') }}</span></div></div></div></div>');
+        $('.easy').append(carmodel);
+      });
+
+      $('.remove-button').click(function(){
+        
+      });
+
+    });
+
+</script>
+
+
+
+
+
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 
-<script>
+<!-- <script>
 
 $(document).ready(function() {
     
@@ -216,12 +239,16 @@ $(document).ready(function() {
     }
   
     function addNewField() {
+    
       count = totalFields() + 1;
       field = $("#dynamic-field-1").clone();
       field.attr("id", "dynamic-field-" + count);
       field.children("label").text("Field " + count);
       field.find("input").val("");
       $(className + ":last").after($(field));
+      $('this').parent().parent().parent().append($(field));
+    
+    
     }
   
     function removeLastField() {
@@ -284,12 +311,12 @@ $(document).ready(function() {
     var field_brand = "";
     var maxFields_brand =50;
   
-    function totalFields() {
+    function totalFields_brand() {
       return $(className_brand).length;
     }
   
-    function addNewField() {
-      count_brand = totalFields() + 1;
+    function addNewField_brand() {
+      count_brand = totalFields_brand() + 1;
       field_brand = $("#dynamic-field-1_brand").clone();
       field_brand.attr("id", "dynamic-field-" + count_brand);
       field_brand.children("label").text("Field " + count_brand);
@@ -297,51 +324,51 @@ $(document).ready(function() {
       $(className_brand + ":last").after($(field_brand));
     }
   
-    function removeLastField() {
-      if (totalFields() > 1) {
+    function removeLastField_brand() {
+      if (totalFields_brand() > 1) {
         $(className_brand + ":last").remove();
       }
     }
   
-    function enableButtonRemove() {
-      if (totalFields() === 2) {
+    function enableButtonRemove_brand() {
+      if (totalFields_brand() === 2) {
         buttonRemove_brand.removeAttr("disabled");
         buttonRemove_brand.addClass("shadow-sm");
       }
     }
   
-    function disableButtonRemove() {
-      if (totalFields() === 1) {
+    function disableButtonRemove_brand() {
+      if (totalFields_brand() === 1) {
         buttonRemove_brand.attr("disabled", "disabled");
         buttonRemove_brand.removeClass("shadow-sm");
       }
     }
   
-    function disableButtonAdd() {
-      if (totalFields() === maxFields_brand) {
+    function disableButtonAdd_brand() {
+      if (totalFields_brand() === maxFields_brand) {
         buttonAdd_brand.attr("disabled", "disabled");
         buttonAdd_brand.removeClass("shadow-sm");
       }
     }
   
-    function enableButtonAdd() {
-      if (totalFields() === (maxFields_brand - 1)) {
+    function enableButtonAdd_brand() {
+      if (totalFields_brand() === (maxFields_brand - 1)) {
         buttonAdd_brand.removeAttr("disabled");
         buttonAdd_brand.addClass("shadow-sm");
       }
     }
   
     buttonAdd_brand.click(function() {
-      addNewField();
-      enableButtonRemove();
-      disableButtonAdd();
+      addNewField_brand();
+      enableButtonRemove_brand();
+      disableButtonAdd_brand();
     });
   
     buttonRemove_brand.click(function() {
-      removeLastField();
-      disableButtonRemove();
-      enableButtonAdd();
+      removeLastField_brand();
+      disableButtonRemove_brand();
+      enableButtonAdd_brand();
     });
   });
-</script>
+</script> -->
 @endsection

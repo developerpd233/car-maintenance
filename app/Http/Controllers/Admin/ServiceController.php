@@ -108,8 +108,54 @@ class ServiceController extends Controller
 
     public function store(StoreServiceRequest $request)
     {
-        $p = json_encode($request->price);
-        dd($p);
+
+
+
+        // $metaArr = [];
+        
+        // //meta and value start
+        // if (isset($request->model_year)) 
+        // {
+        //     foreach ($request->model_year as $key => $value) {
+        //         // dd($key);
+        //         $metaArr[$value] = $request->mileage[$key];
+                
+        //     }
+            
+        //     // dd($request->value[$key]);      
+        // }
+
+        // $meta = json_encode(array_filter($metaArr));
+        // dd($meta);
+        // //meta and value end
+
+
+
+
+
+        $model = $request->model_year;
+        $mileage = $request->mileage;
+        $workingtime = $request->working_time;
+        $price = $request->price;
+        
+        if(count($model) > 1){
+            foreach ($model as $key => $value) {
+               
+                $test = $value.",".$mileage[$key].",".$workingtime[$key].",".$price[$key];
+                $data = explode(',',$test);
+                echo "<pre>";
+                print_r($data);
+                echo "</pre>";
+                
+                // dd($value);
+            }
+            dd("cascc");
+        }
+
+
+        dd($request);
+        dd(json_encode($request->model_year));
+        // dd("ASCcas");
         $service = Service::create($request->all());
         $service->branches()->sync($request->input('branches', []));
         $service->brands()->sync($request->input('brands', []));
