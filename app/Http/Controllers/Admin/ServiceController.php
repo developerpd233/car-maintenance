@@ -101,7 +101,8 @@ class ServiceController extends Controller
 
         $branches = Branch::pluck('name', 'id');
 
-        $brands = Brand::pluck('title', 'id');
+        $brands = Brand::get()->toArray();
+        // dd($brands);
 
         return view('admin.services.create', compact('branches', 'brands'));
     }
@@ -110,7 +111,7 @@ class ServiceController extends Controller
     {
 
 
-
+        //dd($request);
         // $metaArr = [];
         
         // //meta and value start
@@ -137,11 +138,12 @@ class ServiceController extends Controller
         $mileage = $request->mileage;
         $workingtime = $request->working_time;
         $price = $request->price;
+        $brand = $request->hidden_brand;
         
         if(count($model) > 1){
             foreach ($model as $key => $value) {
                
-                $test = $value.",".$mileage[$key].",".$workingtime[$key].",".$price[$key];
+                $test = $value.",".$mileage[$key].",".$workingtime[$key].",".$price[$key].",".$brand[$key];
                 $data = explode(',',$test);
                 echo "<pre>";
                 print_r($data);

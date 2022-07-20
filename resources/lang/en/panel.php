@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'Product Management',
+    'site_title' => 'Car Maintenance',
 ];
