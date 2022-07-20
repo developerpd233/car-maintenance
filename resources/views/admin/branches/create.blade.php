@@ -54,6 +54,265 @@
                     <span class="text-danger">{{ $errors->first('status') }}</span>
                 @endif
             </div>
+
+            <label><h4>Branch operational hour &  car acceptance number</h3></label>
+            <div class="branch_timing">
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Monday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_monday active" name="switchbtn[]" value="on" checked>
+                            <span class="slider round"></span>
+                            <input type="text" name="radio_hidden" id="radio_hidden" class="radio_hidden" value="on">
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1">
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+            
+
+
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Tuesday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_tuesday active" name="switchbtn[]" value="on" checked>
+                            <span class="slider round"></span>
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1">
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Wednesday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_wednesday active" name="switchbtn[]" value="on" checked>
+                            <span class="slider round"></span>
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1">
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Thursday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_thursday active" name="switchbtn[]" value="on" checked>
+                            <span class="slider round"></span>
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1">
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Friday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_friday active" name="switchbtn[]" value="on" checked>
+                            <span class="slider round"></span>
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1">
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Saturday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_saturday active" name="switchbtn[]" value="on" checked>
+                            <span class="slider round"></span>
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1" required>
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="branch_row">
+                    <div class="form-group switchbtn">
+                        <div>
+                            <label for="">Sunday</label>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" class="open_closed_sunday active" name="switchbtn[]" value="on" checked>
+                            <input type="text" name="radio_hidden[]" id="radio_hidden" class="radio_hidden" value="on">
+                            <span class="slider round"></span>
+                        </label><span class="switch_open_close">open</span>
+                    </div>
+                    <div class="if_branch_closed">
+                        <div class="form-group start_time">
+                            <input type="time" name="start_time[]" id="start_time" class="form-control"  min="1" max="24" required>
+                        </div>
+                        <div class="form-group">
+                            <p>-</p>
+                        </div>
+                        <div class="form-group end_time">
+                            <input type="time" name="end_time[]" id="end_time" class="form-control" min="1" max="24" required>
+                        </div>
+                        <div class="form-group cars">
+                            <input type="number" name="cars[]" id="cars" class="form-control" min="1">
+                            <input type="text" name="cars" id="cars" class="form-control" placeholder="cars" disabled>
+                        </div>
+                        <div class="form-group">
+                            <p>Per</p>
+                        </div>
+                        <div class="form-group hours">
+                            <input type="number" name="hours[]" id="hours" class="form-control" min="1" required>
+                            <input type="text" name="hours" id="hours" class="form-control" placeholder="hours" disabled>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
             <div class="form-group">
                 <button class="btn btn-success" type="submit">
                     Add branch
@@ -65,4 +324,37 @@
 
 
 
+@endsection
+
+
+@section('scripts')
+    
+
+<script>
+$(document).ready(function() {
+    $(".open_closed_monday, .open_closed_tuesday, .open_closed_wednesday, .open_closed_thursday, .open_closed_friday, .open_closed_saturday, .open_closed_sunday").click( function() {
+        
+        $me = $(this);
+        $me.toggleClass('off');
+        if($me.is(".off")){
+            $(".switch_open_close").text("closed");
+            $(this).parent().parent().next().hide();
+            $(this).parent().parent().next().children().children().removeAttr("required");
+            // $(this).val("off");
+            // $(this).next().val("off");
+        }else {          
+            $(".switch_open_close").text("open");
+            $(this).parent().parent().next().show();
+            $(this).parent().parent().next().children().children().attr("required", true);
+            // $(this).val("on");
+            // $(this).next().val("on");
+        }
+    });         
+});
+
+
+
+
+
+</script>
 @endsection
