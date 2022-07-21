@@ -68,7 +68,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('subscribtion_access')
+                            {{-- @can('subscribtion_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.subscribtions.index") }}" class="nav-link {{ request()->is("admin/subscribtions") || request()->is("admin/subscribtions/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-cogs">
@@ -79,11 +79,11 @@
                                         </p>
                                     </a>
                                 </li>
-                            @endcan
+                            @endcan --}}
                         </ul>
                     </li>
                 @endcan
-                @can('product_management_access')
+                {{-- @can('product_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/products*") ? "menu-open" : "" }} {{ request()->is("admin/transactions*") ? "menu-open" : "" }} {{ request()->is("admin/orders*") ? "menu-open" : "" }} {{ request()->is("admin/reviews*") ? "menu-open" : "" }} {{ request()->is("admin/product-categories*") ? "menu-open" : "" }} {{ request()->is("admin/product-tags*") ? "menu-open" : "" }} {{ request()->is("admin/packages*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-shopping-cart">
@@ -167,22 +167,22 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('package_access')
-                                <li class="nav-item">
-                                    <a href="{{ route("admin.packages.index") }}" class="nav-link {{ request()->is("admin/packages") || request()->is("admin/packages/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-cogs">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('cruds.package.title') }}
-                                        </p>
-                                    </a>
-                                </li>
-                            @endcan
                         </ul>
                     </li>
-                @endcan
-                @can('content_management_access')
+                @endcan --}}
+                {{-- @can('package_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.packages.index") }}" class="nav-link {{ request()->is("admin/packages") || request()->is("admin/packages/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.package.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan --}}
+                {{-- @can('content_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/content-categories*") ? "menu-open" : "" }} {{ request()->is("admin/content-tags*") ? "menu-open" : "" }} {{ request()->is("admin/content-pages*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-book">
@@ -232,8 +232,8 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan
-                @can('blog_management_access')
+                @endcan --}}
+                {{-- @can('blog_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/blogs*") ? "menu-open" : "" }} {{ request()->is("admin/types*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fab fa-blogger-b">
@@ -271,8 +271,8 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan
-                @can('chat_access')
+                @endcan --}}
+                {{-- @can('chat_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.chats.index") }}" class="nav-link {{ request()->is("admin/chats") || request()->is("admin/chats/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fas fa-comments">
@@ -283,8 +283,8 @@
                             </p>
                         </a>
                     </li>
-                @endcan
-                @can('setting_access')
+                @endcan --}}
+                {{-- @can('setting_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.settings.index") }}" class="nav-link {{ request()->is("admin/settings") || request()->is("admin/settings/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fas fa-cogs">
@@ -295,8 +295,8 @@
                             </p>
                         </a>
                     </li>
-                @endcan
-                @can('basic_c_r_m_access')
+                @endcan --}}
+                {{-- @can('basic_c_r_m_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/crm-statuses*") ? "menu-open" : "" }} {{ request()->is("admin/crm-customers*") ? "menu-open" : "" }} {{ request()->is("admin/crm-notes*") ? "menu-open" : "" }} {{ request()->is("admin/crm-documents*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
                             <i class="fa-fw nav-icon fas fa-briefcase">
@@ -358,8 +358,8 @@
                             @endcan
                         </ul>
                     </li>
-                @endcan
-                <!-- @can('branch_service_crud_access')
+                @endcan --}}
+                {{-- @can('branch_service_crud_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.branch-service-cruds.index") }}" class="nav-link {{ request()->is("admin/branch-service-cruds") || request()->is("admin/branch-service-cruds/*") ? "active" : "" }}">
                             <i class="fa-fw nav-icon fas fa-cogs">
@@ -370,7 +370,7 @@
                             </p>
                         </a>
                     </li>
-                @endcan -->
+                @endcan --}}
                 @can('brand_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.brands.index") }}" class="nav-link {{ request()->is("admin/brands") || request()->is("admin/brands/*") ? "active" : "" }}">
@@ -407,7 +407,7 @@
                         </a>
                     </li>
                 @endcan
-                @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
+                {{-- @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('profile/password') || request()->is('profile/password/*') ? 'active' : '' }}" href="{{ route('profile.password.edit') }}">
@@ -419,7 +419,7 @@
                             </a>
                         </li>
                     @endcan
-                @endif
+                @endif --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
